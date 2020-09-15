@@ -1,0 +1,11 @@
+//Ici seront décrites les modifications faites
+#15/09/2020#RémiAccart#
+-Création du MCD
+
+#15/09/2020#RémiAccart#
+-Création des tables Competence, Developpeur, Projet, Tache
+
+#15/09/2020#TomRobette#
+-Création du repository Github
+-Constitution de la structure MVC du site
+-Création du MLD

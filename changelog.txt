@@ -1,5 +1,5 @@
 //Ici seront décrites les modifications faites
-#15/09/2020#RémiAccart#
+#15/09/2020#HugoFontaine#
 -Création du MCD
 
 #15/09/2020#RémiAccart#

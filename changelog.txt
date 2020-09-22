@@ -1,14 +1,19 @@
 //Ici seront décrites les modifications faites
+
 #22/09/2020#HugoFontaine#
 -Mise en place des liaisons
 
+#22/09/2020#RémiAccart
+-Ajout de la BD
+-Correction route ,ajout d'un menu et création de la page accueils
 
+#22/09/2020#TomRobette#
+-Mise en .gitignore les parametres.php
+-Création de la classe projet
 
 #15/09/2020#HugoFontaine#
 -Création du MCD
 
-#22/09/2020#
--Ajout de la BD
 #15/09/2020#RémiAccart#
 -Création des tables Competence, Developpeur, Projet, Tache
 

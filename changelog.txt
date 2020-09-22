@@ -4,6 +4,8 @@
 
 #15/09/2020#RémiAccart#
 -Création des tables Competence, Developpeur, Projet, Tache
+#22/09/2020#
+-Ajout de la BD
 
 #15/09/2020#TomRobette#
 -Création du repository Github

@@ -5,6 +5,7 @@
 
 #22/09/2020#TomRobette#
 -Mise en .gitignore les parametres.php
+-Création de la classe projet
 
 #15/09/2020#HugoFontaine#
 -Création du MCD

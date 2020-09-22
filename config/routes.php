@@ -20,7 +20,11 @@ function getPage($db){
     
         return $contenu;
     }else{
+<<<<<<< HEAD
         return $lesPages['accueil'];
+=======
+        return $lesPages['maintenance'];
+>>>>>>> 28e5a0ad305839e10fec837aae6aa1a9ebf7a690
     }
 }
 ?>

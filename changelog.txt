@@ -1,4 +1,8 @@
 //Ici seront décrites les modifications faites
+
+#22/09/2020#HugoFontaine#
+-Mise en place des liaisons
+
 #22/09/2020#RémiAccart
 -Ajout de la BD
 -Correction route ,ajout d'un menu et création de la page accueils
@@ -7,6 +11,9 @@
 #22/09/2020#TomRobette#
 -Mise en .gitignore les parametres.php
 -Création de la classe projet
+-Ajout de la fonction getProjets dans la classe projet
+-Ajout de la fonction getProjetsFromClient dans la classe projet
+-Ajout de la table Utilisateur et Rôles
 
 #15/09/2020#HugoFontaine#
 -Création du MCD

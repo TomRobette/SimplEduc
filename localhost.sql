@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 22 Septembre 2020 à 12:51
+-- Généré le :  Mar 22 Septembre 2020 à 14:17
 -- Version du serveur :  10.1.41-MariaDB-0+deb9u1
 -- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
@@ -112,6 +112,26 @@ CREATE TABLE `Projet` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `Role`
+--
+
+CREATE TABLE `Role` (
+  `id_role` int(11) NOT NULL,
+  `libelle` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `Role`
+--
+
+INSERT INTO `Role` (`id_role`, `libelle`) VALUES
+(1, 'Developpeur'),
+(2, 'Client'),
+(3, 'Responsable');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `Tâche`
 --
 
@@ -121,6 +141,20 @@ CREATE TABLE `Tâche` (
   `temps_tache` text NOT NULL,
   `status` text NOT NULL,
   `id_proj` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Utilisateur`
+--
+
+CREATE TABLE `Utilisateur` (
+  `id_user` int(11) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  `prenom` varchar(30) NOT NULL,
+  `mdp` varchar(100) NOT NULL,
+  `id_role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -170,12 +204,39 @@ ALTER TABLE `Projet`
   ADD KEY `id_contrat` (`id_contrat`);
 
 --
+-- Index pour la table `Role`
+--
+ALTER TABLE `Role`
+  ADD PRIMARY KEY (`id_role`);
+
+--
 -- Index pour la table `Tâche`
 --
 ALTER TABLE `Tâche`
   ADD PRIMARY KEY (`id_tache`),
   ADD KEY `id_proj` (`id_proj`);
 
+--
+-- Index pour la table `Utilisateur`
+--
+ALTER TABLE `Utilisateur`
+  ADD PRIMARY KEY (`id_user`),
+  ADD KEY `id_role` (`id_role`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `Role`
+--
+ALTER TABLE `Role`
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `Utilisateur`
+--
+ALTER TABLE `Utilisateur`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Contraintes pour les tables exportées
 --
@@ -211,6 +272,12 @@ ALTER TABLE `Projet`
 --
 ALTER TABLE `Tâche`
   ADD CONSTRAINT `Tâche_ibfk_1` FOREIGN KEY (`id_proj`) REFERENCES `Projet` (`id_proj`);
+
+--
+-- Contraintes pour la table `Utilisateur`
+--
+ALTER TABLE `Utilisateur`
+  ADD CONSTRAINT `Utilisateur_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `Role` (`id_role`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

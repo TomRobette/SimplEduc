@@ -2,5 +2,5 @@
     $config['serveur']='localhost';
     $config['login']='login4125';
     $config['mdp']='RqLabdNIALGBgrq';
-    $config['bd']='dblogin4125';
+    $config['bd']='simpleduc';
 ?>

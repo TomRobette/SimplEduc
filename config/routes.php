@@ -4,7 +4,7 @@ function getPage($db){
     
     
 
-    /*if($db!=NULL){
+    if($db!=NULL){
         if(isset($_GET['page'])) {
             $page=$_GET['page'];
         }else{
@@ -20,7 +20,7 @@ function getPage($db){
     
         return $contenu;
     }else{
-        return $lesPages['maintenance'];
-    }*/
+        return $lesPages['accueil'];
+    }
 }
 ?>

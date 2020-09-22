@@ -15,9 +15,9 @@
     $twig = new \Twig\Environment($loader, []);
     $twig->addGlobal('session', $_SESSION);
 
-    /*$db=connect($config);
+    $db=connect($config);
     $contenu=getPage($db);
-    $contenu($twig,$db);*/
+    $contenu($twig,$db);
     
 ?>
 

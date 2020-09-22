@@ -1,4 +1,9 @@
 //Ici seront décrites les modifications faites
+#22/09/2020#HugoFontaine#
+-Mise en place des liaisons
+
+
+
 #15/09/2020#HugoFontaine#
 -Création du MCD
 

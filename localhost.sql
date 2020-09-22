@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 22 Septembre 2020 à 11:25
+-- Généré le :  Mar 22 Septembre 2020 à 12:41
 -- Version du serveur :  10.1.41-MariaDB-0+deb9u1
 -- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
@@ -25,13 +25,26 @@ USE `simpleduc`;
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `Affecter`
+--
+
+CREATE TABLE `Affecter` (
+  `id_dev` int(11) NOT NULL,
+  `id_tache` int(11) NOT NULL,
+  `temps` varchar(180) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `Competence`
 --
 
 CREATE TABLE `Competence` (
   `id_competence` int(11) NOT NULL,
   `libelle` text NOT NULL,
-  `version` text NOT NULL
+  `version` text NOT NULL,
+  `id_dev` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -44,7 +57,8 @@ CREATE TABLE `Contrat` (
   `id_contrat` int(11) NOT NULL,
   `delai_prod` text NOT NULL,
   `date_signature` date NOT NULL,
-  `coût_global` int(11) NOT NULL
+  `coût_global` int(11) NOT NULL,
+  `id_entreprise` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -57,7 +71,6 @@ CREATE TABLE `Developpeur` (
   `id_dev` int(11) NOT NULL,
   `nom` text NOT NULL,
   `prenom` text NOT NULL,
-  `no_sup` int(11) DEFAULT NULL,
   `date_embauche` date NOT NULL,
   `coût_horaire` int(11) NOT NULL,
   `adr_ville` text NOT NULL,
@@ -92,7 +105,8 @@ CREATE TABLE `Entreprise` (
 CREATE TABLE `Projet` (
   `id_proj` int(11) NOT NULL,
   `libelle` text NOT NULL,
-  `id_resp` int(11) NOT NULL
+  `id_resp` int(11) NOT NULL,
+  `id_contrat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -105,7 +119,8 @@ CREATE TABLE `Tâche` (
   `id_tache` int(11) NOT NULL,
   `libelle` text NOT NULL,
   `temps_tache` text NOT NULL,
-  `status` text NOT NULL
+  `status` text NOT NULL,
+  `id_proj` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -113,24 +128,31 @@ CREATE TABLE `Tâche` (
 --
 
 --
+-- Index pour la table `Affecter`
+--
+ALTER TABLE `Affecter`
+  ADD KEY `id_dev` (`id_dev`),
+  ADD KEY `id_tache` (`id_tache`);
+
+--
 -- Index pour la table `Competence`
 --
 ALTER TABLE `Competence`
-  ADD PRIMARY KEY (`id_competence`);
+  ADD PRIMARY KEY (`id_competence`),
+  ADD KEY `id_dev` (`id_dev`);
 
 --
 -- Index pour la table `Contrat`
 --
 ALTER TABLE `Contrat`
-  ADD PRIMARY KEY (`id_contrat`);
+  ADD PRIMARY KEY (`id_contrat`),
+  ADD UNIQUE KEY `id_entreprise` (`id_entreprise`) USING BTREE;
 
 --
 -- Index pour la table `Developpeur`
 --
 ALTER TABLE `Developpeur`
   ADD PRIMARY KEY (`id_dev`),
-  ADD KEY `no_sup` (`no_sup`),
-  ADD KEY `no_sup_2` (`no_sup`),
   ADD KEY `id_dev` (`id_dev`);
 
 --
@@ -144,29 +166,51 @@ ALTER TABLE `Entreprise`
 --
 ALTER TABLE `Projet`
   ADD PRIMARY KEY (`id_proj`),
-  ADD KEY `id_resp` (`id_resp`);
+  ADD KEY `id_resp` (`id_resp`),
+  ADD KEY `id_contrat` (`id_contrat`);
 
 --
 -- Index pour la table `Tâche`
 --
 ALTER TABLE `Tâche`
-  ADD PRIMARY KEY (`id_tache`);
+  ADD PRIMARY KEY (`id_tache`),
+  ADD KEY `id_proj` (`id_proj`);
 
 --
 -- Contraintes pour les tables exportées
 --
 
 --
--- Contraintes pour la table `Developpeur`
+-- Contraintes pour la table `Affecter`
 --
-ALTER TABLE `Developpeur`
-  ADD CONSTRAINT `Developpeur_ibfk_1` FOREIGN KEY (`no_sup`) REFERENCES `Developpeur` (`id_dev`);
+ALTER TABLE `Affecter`
+  ADD CONSTRAINT `Affecter_ibfk_1` FOREIGN KEY (`id_dev`) REFERENCES `Developpeur` (`id_dev`),
+  ADD CONSTRAINT `Affecter_ibfk_2` FOREIGN KEY (`id_tache`) REFERENCES `Tâche` (`id_tache`);
+
+--
+-- Contraintes pour la table `Competence`
+--
+ALTER TABLE `Competence`
+  ADD CONSTRAINT `Competence_ibfk_1` FOREIGN KEY (`id_dev`) REFERENCES `Developpeur` (`id_dev`);
+
+--
+-- Contraintes pour la table `Contrat`
+--
+ALTER TABLE `Contrat`
+  ADD CONSTRAINT `Contrat_ibfk_1` FOREIGN KEY (`id_entreprise`) REFERENCES `Entreprise` (`id_entreprise`);
 
 --
 -- Contraintes pour la table `Projet`
 --
 ALTER TABLE `Projet`
-  ADD CONSTRAINT `Projet_ibfk_1` FOREIGN KEY (`id_resp`) REFERENCES `Developpeur` (`id_dev`);
+  ADD CONSTRAINT `Projet_ibfk_1` FOREIGN KEY (`id_resp`) REFERENCES `Developpeur` (`id_dev`),
+  ADD CONSTRAINT `Projet_ibfk_2` FOREIGN KEY (`id_contrat`) REFERENCES `Contrat` (`id_contrat`);
+
+--
+-- Contraintes pour la table `Tâche`
+--
+ALTER TABLE `Tâche`
+  ADD CONSTRAINT `Tâche_ibfk_1` FOREIGN KEY (`id_proj`) REFERENCES `Projet` (`id_proj`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

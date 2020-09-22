@@ -1,4 +1,7 @@
 //Ici seront décrites les modifications faites
+#22/09/2020#TomRobette#
+-Mise en .gitignore les parametres.php
+
 #15/09/2020#HugoFontaine#
 -Création du MCD
 

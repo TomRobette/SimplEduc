@@ -1,4 +1,8 @@
 //Ici seront décrites les modifications faites
+#29/09/2020#TomRobette#
+-Ajout des fonctions delete, selectLimit et selectCount dans class_projet
+-Création du controleur liste_projets et de sa vue
+-Création des classes client et tache (vides)
 
 #22/09/2020#HugoFontaine#
 -Mise en place des liaisons

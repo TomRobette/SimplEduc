@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{parent()}}Projets{% endblock %}
+
+{% block contenu %}
+{% if form.etat is defined %}
+    {% if form.etat == true %}
+        <h1 class="h3 mb-3 font-weight-normal">Suppression réussie</h1>
+    {% else %}
+        <h1 class="alert alert-danger" role="alert">Problème lors de la suppression</h1>
+    {% endif %}
+{% endif %} 
+{% for projet in liste %}
+    <div class="row justify-content-center">            
+        <div class="col-8 bg-white p-2 m-0 text-primary">
+            <a class="list-group-item list-group-item-action md-3">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{projet.libelle}}</h5>
+                    <small>
+                        {{projet.date_signature}}
+                    {% endif %}
+                    </small>
+                    
+                </div>
+                <p class="mb-1">{{projet.contenu|slice(start, 100)}}...</p>
+            </a>
+            {% if session.role==1 %}
+                <div class="position-relative-left">
+                    <button type="button" class="btn btn-outline-dark">
+                        <a href="index.php?page=listearticles&id={{projet.id_proj}}" class="text-dark">
+                            <span class="material-icons">
+                            delete
+                            </span>
+                        </a>    
+                    </button>
+                </div>    
+            {% endif %}
+        </div>
+    </div>    
+{% endfor %}
+
+{% set nb = form.nbpages %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center m-4 p-4">
+            <li class="page-item-alert {% if form.nopage == 0 %}disabled{% endif %}">
+                <a class="page-link" href="index.php?page=liste_projets&nopage={{ 0 }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% for i in 1..nb %}
+                <li class="page-item-alert {% if i ==form.nopage +1 %} active{% endif %}">
+                    <a class="page-link" href="index.php?page=liste_projets&nopage={{ i-1 }}">
+                    {{ i }}
+                    <span class="sronly"></span>
+                    </a>
+                </li>
+            {% endfor %}
+            <li class="page-item-alert {% if form.nopage == form.nbpages-1 %}disabled{% endif %}">
+                <a class="page-link" href="index.php?page=liste_projets&nopage={{ nb-1 }}" aria-label="Next" >
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}

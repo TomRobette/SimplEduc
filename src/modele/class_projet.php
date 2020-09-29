@@ -10,12 +10,12 @@
 
         public function __construct($db){
             $this->db=$db;
-            $this->insert = $this->db->prepare("INSERT INTO projet(id_proj, libelle, id_resp)values(:id_proj,:libelle,:id_resp");
-			$this->getProjets = $this->db->prepare("SELECT P.id_proj, P.libelle, P.id_resp, D.nom, D.prenom FROM projet P, developpeur D WHERE P.id_resp=D.id_dev ORDER BY P.id_proj");
-            $this->getProjetsFromClient = $this->db->prepare("SELECT P.id_proj, P.libelle, P.id_resp, C.date_signature FROM projet P, contrat c WHERE P.id_contrat=C.id_contrat AND C.id_entreprise=:id_entreprise ORDER BY P.id_proj");
-			$this->delete = $this->db->prepare("DELETE FROM projet WHERE id_proj=:id");
-			$this->selectLimit = $this->db->prepare("SELECT P.id_proj, P.libelle, P.id_resp, D.nom, D.prenom FROM projet P, developpeur D WHERE P.id_resp=D.id_dev ORDER BY P.id_proj LIMIT :inf,:limite");
-			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM projet");
+            $this->insert = $this->db->prepare("INSERT INTO Projet(libelle, id_resp, id_contrat)values(:libelle,:id_resp,:id_contrat");
+			$this->getProjets = $this->db->prepare("SELECT P.id_proj, P.libelle, P.id_resp, D.nom, D.prenom FROM Projet P, Developpeur D WHERE P.id_resp=D.id_dev ORDER BY P.id_proj");
+            $this->getProjetsFromClient = $this->db->prepare("SELECT P.id_proj, P.libelle, P.id_resp, C.date_signature FROM Projet P, Contrat C WHERE P.id_contrat=C.id_contrat AND C.id_entreprise=:id_entreprise ORDER BY P.id_proj");
+			$this->delete = $this->db->prepare("DELETE FROM Projet WHERE id_proj=:id");
+			$this->selectLimit = $this->db->prepare("SELECT P.id_proj, P.libelle, P.id_resp, D.nom, D.prenom FROM Projet P, Developpeur D WHERE P.id_resp=D.id_dev ORDER BY P.id_proj LIMIT :inf,:limite");
+			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Projet");
 		}
 
 		public function selectLimit($inf, $limite){
@@ -46,9 +46,9 @@
 			return $r;
 		}
 
-		public function insert($id_proj,$libelle,$id_resp){
+		public function insert($libelle,$id_resp,$id_contrat){
 			$r = true;
-			$this->insert->execute(array(':id_proj'=>$id_proj,':libelle'=>$libelle,':id_resp'=>$id_resp));
+			$this->insert->execute(array(':libelle'=>$libelle,':id_resp'=>$id_resp,':id_contrat'=>$id_contrat));
 			
 			if($this->insert->errorCode()!=0){
 				print_r($this->insert->errorInfo());

@@ -1,16 +1,16 @@
 <?php
-	class Tache{
+	class Entreprise{
         private $db;
 		private $insert;
-        private $getTaches;
+        private $getEntreprises;
 		private $delete;
 		private $selectLimit;
 		private $selectCount;
 
         public function __construct($db){
             $this->db=$db;
-            $this->insert = $this->db->prepare("INSERT INTO Tâche(libelle, temps_tache, status, id_proj)VALUES(:libelle,:temps_tache,:status,:id_proj");
-			$this->getTaches = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache");
+            $this->insert = $this->db->prepare("INSERT INTO Entreprise(id_entreprise 	adr_ville 	adr_cp 	adr_rue 	adr_no 	nom_contact 	prenom_contact 	tel_contact)VALUES(:id_tache,:libelle,:temps_tache,:status,:id_proj");
+			$this->getEntreprises = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, P.libelle FROM Entreprise, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache");
             $this->delete = $this->db->prepare("DELETE FROM Tâche WHERE id_tache=:id");
 			$this->selectLimit = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache LIMIT :inf,:limite");
 			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Tâche");
@@ -44,9 +44,9 @@
 			return $r;
 		}
 
-		public function insert($libelle, $temps_tache, $status, $id_proj){
+		public function insert($id_proj,$libelle,$id_resp){
 			$r = true;
-			$this->insert->execute(array(':libelle'=>$libelle,':temps_tache'=>$temps_tache,':status'=>$status, ':id_proj'=>$id_proj));
+			$this->insert->execute(array(':id_proj'=>$id_proj,':libelle'=>$libelle,':id_resp'=>$id_resp));
 			
 			if($this->insert->errorCode()!=0){
 				print_r($this->insert->errorInfo());

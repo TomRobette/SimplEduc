@@ -3,6 +3,7 @@ function getPage($db){
     $lesPages['accueil']="accueilControleur";
     $lesPages['maintenance']="maintenanceControleur";
     $lesPages['listeProjets']="listeProjetsControleur";
+    $lesPages['ajoutDev']="ajoutDevControleur";
     
     
 

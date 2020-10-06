@@ -2,18 +2,19 @@
 	class Developpeur{
         private $db;
 		private $insert;
-        private $getDeveloppeurs;
+		private $getDeveloppeurs;
+		private $getDeveloppeurById;
 		private $delete;
 		private $selectLimit;
 		private $selectCount;
 
         public function __construct($db){
             $this->db=$db;
-            $this->insert = $this->db->prepare("INSERT INTO Developpeur(nom, prenom, date_embauche, coût_horaire, adr_ville, adr_cp, adr_rue, adr_no)VALUES(:id_dev, :nom, :prenom, :date_embauche, :coût_horaire, :adr_ville, :adr_cp, :adr_rue, :adr_no");
-			$this->getDeveloppeurs = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, coût_horaire, adr_ville, adr_cp, adr_rue, adr_no FROM Developpeur ORDER BY date_embauche");
-            $this->getDeveloppeurById = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, coût_horaire, adr_ville, adr_cp, adr_rue, adr_no FROM Developpeur WHERE id_dev=:id");
+            $this->insert = $this->db->prepare("INSERT INTO Developpeur(nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no) VALUES (:nom, :prenom, :date_embauche, :cout_horaire, :adr_ville, :adr_cp, :adr_rue, :adr_no");
+			$this->getDeveloppeurs = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no FROM Developpeur ORDER BY date_embauche");
+            $this->getDeveloppeurById = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no FROM Developpeur WHERE id_dev=:id");
             $this->delete = $this->db->prepare("DELETE FROM Developpeur WHERE id_dev=:id");
-			$this->selectLimit = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, coût_horaire, adr_ville, adr_cp, adr_rue, adr_no FROM Developpeur ORDER BY date_embauche LIMIT :inf,:limite");
+			$this->selectLimit = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no FROM Developpeur ORDER BY date_embauche LIMIT :inf,:limite");
 			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Developpeur");
 		}
 
@@ -45,9 +46,9 @@
 			return $r;
 		}
 
-		public function insert($nom, $prenom, $date_embauche, $coût_horaire, $adr_ville, $adr_cp, $adr_rue, $adr_no){
+		public function insert($nom, $prenom, $date_embauche, $cout_horaire, $adr_ville, $adr_cp, $adr_rue, $adr_no){
 			$r = true;
-			$this->insert->execute(array(':nom'=>$nom, ':prenom'=>$prenom, ':date_embauche'=>$date_embauche, ':coût_horaire'=>$coût_horaire, ':adr_ville'=>$adr_ville, ':adr_cp'=>$adr_cp, ':adr_rue'=>$adr_rue, ':adr_no'=>$adr_no));
+			$this->insert->execute(array(':nom'=>$nom, ':prenom'=>$prenom, ':date_embauche'=>$date_embauche, ':cout_horaire'=>$cout_horaire, ':adr_ville'=>$adr_ville, ':adr_cp'=>$adr_cp, ':adr_rue'=>$adr_rue, ':adr_no'=>$adr_no));
 			
 			if($this->insert->errorCode()!=0){
 				print_r($this->insert->errorInfo());

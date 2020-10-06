@@ -66,11 +66,11 @@
 		}
 
 		public function getProjets(){
-			$this->getProjetsFromClient->execute();
-			if ($this->getProjetsFromClient->errorCode()!=0){
-				print_r($this->getProjetsFromClient->errorInfo());
+			$this->getProjets->execute();
+			if ($this->getProjets->errorCode()!=0){
+				print_r($this->getProjets->errorInfo());
 			}
-			return $this->getProjetsFromClient->fetchAll();
+			return $this->getProjets->fetchAll();
 		}
     }
 ?>   

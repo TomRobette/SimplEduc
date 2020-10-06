@@ -1,10 +1,10 @@
 <?php
-    function liste_projetsControleur($twig, $db){
+    function listeProjetsControleur($twig, $db){
 
         $liste = array();
 
         $projet = new Projet($db);
-        $liste = $projet->getArticle();
+        $liste = $projet->getProjets();
 
         if(isset($_GET['id'])){
             $exec=$projet->delete($_GET['id']);
@@ -14,7 +14,7 @@
             }else{
                 $etat = true;
             }
-            header('Location: index.php?page=liste_projets&etat='.$etat);
+            header('Location: index.php?page=listeProjets&etat='.$etat);
             exit;
         }
 
@@ -35,7 +35,7 @@
         $form['nopage'] = $nopage;
 
         
-        echo $twig -> render('liste_projet.html.twig',array('form'=>$form,'liste'=>$liste));
+        echo $twig -> render('listeProjets.html.twig',array('form'=>$form,'liste'=>$liste));
     
     }
 ?>

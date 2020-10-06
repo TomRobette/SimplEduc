@@ -15,6 +15,7 @@
 
         $dev=new Developpeur($db);
         $exec=$dev->insert($inputNom, $inputPrenom, $inputDate_embauche, $inputCout_horaire, $inputAdr_ville, $inputAdr_cp, $inputAdr_rue, $inputAdr_no);
+        //die(var_dump($exec));
           if(!$exec){
             $form['valide'] = false;
             $form['message'] = 'Problème d\'insertion dans la table développeur ';

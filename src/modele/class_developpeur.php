@@ -10,7 +10,7 @@
 
         public function __construct($db){
             $this->db=$db;
-            $this->insert = $this->db->prepare("INSERT INTO Developpeur(nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no) VALUES (:nom, :prenom, :date_embauche, :cout_horaire, :adr_ville, :adr_cp, :adr_rue, :adr_no");
+            $this->insert = $this->db->prepare("INSERT INTO Developpeur(nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no) VALUES (:nom, :prenom, :date_embauche, :cout_horaire, :adr_ville, :adr_cp, :adr_rue, :adr_no)");
 			$this->getDeveloppeurs = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no FROM Developpeur ORDER BY date_embauche");
             $this->getDeveloppeurById = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no FROM Developpeur WHERE id_dev=:id");
             $this->delete = $this->db->prepare("DELETE FROM Developpeur WHERE id_dev=:id");

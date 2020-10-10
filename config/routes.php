@@ -4,6 +4,7 @@ function getPage($db){
     $lesPages['maintenance']="maintenanceControleur";
     $lesPages['listeProjets']="listeProjetsControleur";
     $lesPages['ajoutDev']="ajoutDevControleur";
+    $lesPages['liste_devs']="liste_devsControleur";
     
     
 

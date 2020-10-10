@@ -4,10 +4,10 @@
         $liste = array();
 
         $developpeur = new Developpeur($db);
-        $liste = $developpeur->getProjets();
+        $liste = $developpeur->getDeveloppeurs();
 
-        if(isset($_GET['id'])){
-            $exec=$developpeur->delete($_GET['id']);
+        if(isset($_GET['supp'])){
+            $exec=$developpeur->delete($_GET['supp']);
            
             if (!$exec){
                 $etat = false;

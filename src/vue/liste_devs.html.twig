@@ -10,10 +10,47 @@
         <h1 class="alert alert-danger" role="alert">Problème lors de la suppression</h1>
     {% endif %}
 {% endif %} 
-{% for dev in liste %}
-     
-{% endfor %}
+<div class="container-fluid">           
+    <div class="row justify-content-center">            
+        <h1 class="text-center text-primary p-4">Liste des utilisateurs</h1>        
+    </div>        
+    <div class="row justify-content-center">            
+        <div class="col-8 bg-white p-4 m-0 text-dark"> 
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prenom</th>
+                        <th scope="col">Date d'embauche</th>
+                        <th scope="col">Coût horaire</th>
+                        <th scope="col">Ville</th>
+                        <th scope="col">Code postal</th>
+                        <th scope="col">Rue</th>
+                        <th scope="col">N° de rue</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dev in liste %}
+                        <tr class="{{ cycle(['table-secondary', 'table-light'], loop.index0)}}">
 
+                            <td>{{dev.nom|capitalize}}</td>
+                            <td>{{dev.prenom|capitalize}}</td>
+                            <td>{{dev.date_embauche|date("d-m-y")}}</td>
+                            <td>{{dev.cout_horaire}}€</td>
+                            <td>{{dev.adr_ville|capitalize}}</td>
+                            <td>{{dev.adr_cp}}</td>
+                            <td>{{dev.adr_rue}}</td>
+                            <td>{{dev.adr_no}}</td>
+                            <td><a href="index.php?page=liste_devs&id={{dev.id_dev}}"<span class="material-icons text-dark" title="Modifier le développeur'">create</span></a></td>
+                            <td><a href="index.php?page=liste_devs&supp={{dev.id_dev}}"<span class="material-icons text-dark" title="Supprimer le développeur">delete</span></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>                
+        </div>        
+    </div>
+</div>
 {% set nb = form.nbpages %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center m-4 p-4">

@@ -9,7 +9,7 @@
 
         public function __construct($db){
             $this->db=$db;
-            $this->insert = $this->db->prepare("INSERT INTO Tâche(libelle, temps_tache, status, id_proj)VALUES(:libelle,:temps_tache,:status,:id_proj");
+            $this->insert = $this->db->prepare("INSERT INTO Tâche(libelle, temps_tache, status, cout, id_proj)VALUES(:libelle,:temps_tache,:status,:cout,:id_proj");
 			$this->getTaches = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache");
             $this->delete = $this->db->prepare("DELETE FROM Tâche WHERE id_tache=:id");
 			$this->selectLimit = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache LIMIT :inf,:limite");

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 13 Octobre 2020 à 12:52
+-- Généré le :  Mar 13 Octobre 2020 à 13:41
 -- Version du serveur :  10.1.41-MariaDB-0+deb9u1
 -- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
@@ -34,6 +34,14 @@ CREATE TABLE `Affecter` (
   `temps` varchar(180) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Contenu de la table `Affecter`
+--
+
+INSERT INTO `Affecter` (`id_dev`, `id_tache`, `temps`) VALUES
+(2, 1, '24h'),
+(3, 1, '24h');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +55,13 @@ CREATE TABLE `Competence` (
   `id_dev` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Contenu de la table `Competence`
+--
+
+INSERT INTO `Competence` (`id_competence`, `libelle`, `version`, `id_dev`) VALUES
+(1, 'Node JS', '14.13.1', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -57,9 +72,15 @@ CREATE TABLE `Contrat` (
   `id_contrat` int(11) NOT NULL,
   `delai_prod` text NOT NULL,
   `date_signature` date NOT NULL,
-  `coût_global` int(11) NOT NULL,
   `id_entreprise` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `Contrat`
+--
+
+INSERT INTO `Contrat` (`id_contrat`, `delai_prod`, `date_signature`, `id_entreprise`) VALUES
+(1, '3 semaines', '2020-10-01', 1);
 
 -- --------------------------------------------------------
 
@@ -84,7 +105,8 @@ CREATE TABLE `Developpeur` (
 --
 
 INSERT INTO `Developpeur` (`id_dev`, `nom`, `prenom`, `date_embauche`, `cout_horaire`, `adr_ville`, `adr_cp`, `adr_rue`, `adr_no`) VALUES
-(2, 'Smith', 'John', '0001-02-10', 1900, 'Arras', '62000', 'Rue des chemins', '12');
+(2, 'Smith', 'John', '0001-02-10', 1900, 'Arras', '62000', 'Rue des chemins', '12'),
+(3, 'Johnson', 'Ron', '2020-07-09', 69, 'Arras', '62000', 'Avenue des chemins', '7');
 
 -- --------------------------------------------------------
 
@@ -103,6 +125,13 @@ CREATE TABLE `Entreprise` (
   `tel_contact` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Contenu de la table `Entreprise`
+--
+
+INSERT INTO `Entreprise` (`id_entreprise`, `adr_ville`, `adr_cp`, `adr_rue`, `adr_no`, `nom_contact`, `prenom_contact`, `tel_contact`) VALUES
+(1, 'Arras', '62000', 'Rue des Avenues', '54 bis', 'Dupuis', 'Mauricette', '0606060606');
+
 -- --------------------------------------------------------
 
 --
@@ -115,6 +144,13 @@ CREATE TABLE `Projet` (
   `id_resp` int(11) NOT NULL,
   `id_contrat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `Projet`
+--
+
+INSERT INTO `Projet` (`id_proj`, `libelle`, `id_resp`, `id_contrat`) VALUES
+(1, 'ShopShop', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -147,8 +183,16 @@ CREATE TABLE `Tâche` (
   `libelle` text NOT NULL,
   `temps_tache` text NOT NULL,
   `status` text NOT NULL,
+  `cout` int(11) NOT NULL,
   `id_proj` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `Tâche`
+--
+
+INSERT INTO `Tâche` (`id_tache`, `libelle`, `temps_tache`, `status`, `cout`, `id_proj`) VALUES
+(1, 'BD', '48h', 'En cours', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -237,27 +281,27 @@ ALTER TABLE `Utilisateur`
 -- AUTO_INCREMENT pour la table `Competence`
 --
 ALTER TABLE `Competence`
-  MODIFY `id_competence` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_competence` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `Contrat`
 --
 ALTER TABLE `Contrat`
-  MODIFY `id_contrat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_contrat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `Developpeur`
 --
 ALTER TABLE `Developpeur`
-  MODIFY `id_dev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_dev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `Entreprise`
 --
 ALTER TABLE `Entreprise`
-  MODIFY `id_entreprise` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_entreprise` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `Projet`
 --
 ALTER TABLE `Projet`
-  MODIFY `id_proj` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_proj` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `Role`
 --
@@ -267,7 +311,7 @@ ALTER TABLE `Role`
 -- AUTO_INCREMENT pour la table `Tâche`
 --
 ALTER TABLE `Tâche`
-  MODIFY `id_tache` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tache` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `Utilisateur`
 --

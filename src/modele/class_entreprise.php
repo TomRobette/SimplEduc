@@ -11,9 +11,9 @@
             $this->db=$db;
             $this->insert = $this->db->prepare("INSERT INTO Entreprise(adr_ville, adr_cp, adr_rue, adr_no, nom_contact, prenom_contact, tel_contact)VALUES(:adr_ville, :adr_cp, :adr_rue, :adr_no, :nom_contact, :prenom_contact, :tel_contact)");
 			$this->getEntreprises = $this->db->prepare("SELECT id_entreprise, adr_ville, adr_cp, adr_rue, adr_no, nom_contact, prenom_contact, tel_contact FROM Entreprise ORDER BY id_entreprise");
-			$this->delete = $this->db->prepare("DELETE FROM Tâche WHERE id_tache=:id");
-			$this->selectLimit = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache LIMIT :inf,:limite");
-			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Tâche");
+			$this->delete = $this->db->prepare("DELETE FROM Entreprise WHERE id_entreprise=:id");
+			$this->selectLimit = $this->db->prepare("SELECT id_entreprise, adr_ville, adr_cp, adr_rue, adr_no, nom_contact, prenom_contact, tel_contact FROM Entreprise ORDER BY id_entreprise LIMIT :inf,:limite");
+			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Entreprise");
 		}
 
 		public function selectLimit($inf, $limite){
@@ -55,12 +55,12 @@
 			return $r;
 		}
 
-		public function getProjets(){
-			$this->getProjetsFromClient->execute();
-			if ($this->getProjetsFromClient->errorCode()!=0){
-				print_r($this->getProjetsFromClient->errorInfo());
+		public function getEntreprises(){
+			$this->getEntreprises->execute();
+			if ($this->getEntreprises->errorCode()!=0){
+				print_r($this->getEntreprises->errorInfo());
 			}
-			return $this->getProjetsFromClient->fetchAll();
+			return $this->getEntreprises->fetchAll();
 		}
     }
 ?>   

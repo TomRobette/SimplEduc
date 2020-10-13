@@ -4,6 +4,7 @@
      require_once 'listeProjetsControleur.php';
      require_once 'ajoutDevControleur.php';
      require_once 'liste_devsControleur.php';
+     require_once 'listeClientsControleur.php';
 ?>
 
 

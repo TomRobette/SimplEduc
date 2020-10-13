@@ -2,7 +2,8 @@
 
 #13/10/2020#TomRobette#
 -Correction du gitignore concernant "parametres.php"
--Correction de l'auto-incrémentatio des tables
+-Correction de l'auto-incrémentation des tables
+-Ajout de quelques valeurs de test dans la BD
 
 #13/10/2020#HugoFontaine#
 -Correction de la base de donnée 

@@ -10,9 +10,34 @@
         <h1 class="alert alert-danger" role="alert">Problème lors de la suppression</h1>
     {% endif %}
 {% endif %} 
-{% for projet in liste %}
-       
-{% endfor %}
+
+<div class="container-fluid">           
+    <div class="row justify-content-center">            
+        <h1 class="text-center text-primary p-4">Liste des utilisateurs</h1>        
+    </div>        
+    <div class="row justify-content-center">            
+        <div class="col-8 bg-white p-4 m-0 text-dark"> 
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Libelle</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for projet in liste %}
+                        <tr class="{{ cycle(['table-secondary', 'table-light'], loop.index0)}}">
+
+                            <td>{{projet.libelle}}</td>
+                            <td><a href="index.php?page=listeProjets&id={{projet.id_proj}}"<span class="material-icons text-dark" title="Modifier le développeur'">create</span></a></td>
+                            <td><a href="index.php?page=listeProjets&supp={{projet.id_proj}}"<span class="material-icons text-dark" title="Supprimer le développeur">delete</span></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>                
+        </div>        
+    </div>
+</div>
 
 {% set nb = form.nbpages %}
     <nav aria-label="Page navigation">

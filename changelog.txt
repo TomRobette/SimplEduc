@@ -1,5 +1,9 @@
 //Ici seront décrites les modifications faites
 
+#13/10/2020#RemiAccart#
+-Ajout de la page d'ajout des clients
+-Ajout du controlleur et de la fonction d'ajout d'un client
+
 #13/10/2020#TomRobette#
 -Correction du gitignore concernant "parametres.php"
 -Correction de l'auto-incrémentation des tables

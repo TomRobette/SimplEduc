@@ -2,6 +2,10 @@
 
 #13/10/2020#TomRobette#
 -Correction du gitignore concernant "parametres.php"
+-Correction de l'auto-incrémentatio des tables
+
+#13/10/2020#HugoFontaine#
+-Correction de la base de donnée 
 
 #10/10/2020#TomRobette#
 -Correction de la table developpeur

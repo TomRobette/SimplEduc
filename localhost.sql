@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 13 Octobre 2020 à 11:30
+-- Généré le :  Mar 13 Octobre 2020 à 12:52
 -- Version du serveur :  10.1.41-MariaDB-0+deb9u1
 -- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
@@ -234,15 +234,40 @@ ALTER TABLE `Utilisateur`
 --
 
 --
+-- AUTO_INCREMENT pour la table `Competence`
+--
+ALTER TABLE `Competence`
+  MODIFY `id_competence` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `Contrat`
+--
+ALTER TABLE `Contrat`
+  MODIFY `id_contrat` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT pour la table `Developpeur`
 --
 ALTER TABLE `Developpeur`
   MODIFY `id_dev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT pour la table `Entreprise`
+--
+ALTER TABLE `Entreprise`
+  MODIFY `id_entreprise` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `Projet`
+--
+ALTER TABLE `Projet`
+  MODIFY `id_proj` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT pour la table `Role`
 --
 ALTER TABLE `Role`
   MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `Tâche`
+--
+ALTER TABLE `Tâche`
+  MODIFY `id_tache` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `Utilisateur`
 --
@@ -256,7 +281,14 @@ ALTER TABLE `Utilisateur`
 -- Contraintes pour la table `Affecter`
 --
 ALTER TABLE `Affecter`
-  ADD CONSTRAINT `Affecter_ibfk_2` FOREIGN KEY (`id_tache`) REFERENCES `Tâche` (`id_tache`);
+  ADD CONSTRAINT `Affecter_ibfk_3` FOREIGN KEY (`id_dev`) REFERENCES `Developpeur` (`id_dev`),
+  ADD CONSTRAINT `Affecter_ibfk_4` FOREIGN KEY (`id_tache`) REFERENCES `Tâche` (`id_tache`);
+
+--
+-- Contraintes pour la table `Competence`
+--
+ALTER TABLE `Competence`
+  ADD CONSTRAINT `Competence_ibfk_1` FOREIGN KEY (`id_dev`) REFERENCES `Developpeur` (`id_dev`);
 
 --
 -- Contraintes pour la table `Contrat`
@@ -268,6 +300,7 @@ ALTER TABLE `Contrat`
 -- Contraintes pour la table `Projet`
 --
 ALTER TABLE `Projet`
+  ADD CONSTRAINT `Projet_ibfk_1` FOREIGN KEY (`id_resp`) REFERENCES `Developpeur` (`id_dev`),
   ADD CONSTRAINT `Projet_ibfk_2` FOREIGN KEY (`id_contrat`) REFERENCES `Contrat` (`id_contrat`);
 
 --

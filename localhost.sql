@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 22 Septembre 2020 à 14:17
+-- Généré le :  Mar 13 Octobre 2020 à 11:30
 -- Version du serveur :  10.1.41-MariaDB-0+deb9u1
 -- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
@@ -72,12 +72,19 @@ CREATE TABLE `Developpeur` (
   `nom` text NOT NULL,
   `prenom` text NOT NULL,
   `date_embauche` date NOT NULL,
-  `coût_horaire` int(11) NOT NULL,
+  `cout_horaire` int(11) NOT NULL,
   `adr_ville` text NOT NULL,
   `adr_cp` text NOT NULL,
   `adr_rue` text NOT NULL,
   `adr_no` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `Developpeur`
+--
+
+INSERT INTO `Developpeur` (`id_dev`, `nom`, `prenom`, `date_embauche`, `cout_horaire`, `adr_ville`, `adr_cp`, `adr_rue`, `adr_no`) VALUES
+(2, 'Smith', 'John', '0001-02-10', 1900, 'Arras', '62000', 'Rue des chemins', '12');
 
 -- --------------------------------------------------------
 
@@ -186,8 +193,7 @@ ALTER TABLE `Contrat`
 -- Index pour la table `Developpeur`
 --
 ALTER TABLE `Developpeur`
-  ADD PRIMARY KEY (`id_dev`),
-  ADD KEY `id_dev` (`id_dev`);
+  ADD PRIMARY KEY (`id_dev`);
 
 --
 -- Index pour la table `Entreprise`
@@ -228,6 +234,11 @@ ALTER TABLE `Utilisateur`
 --
 
 --
+-- AUTO_INCREMENT pour la table `Developpeur`
+--
+ALTER TABLE `Developpeur`
+  MODIFY `id_dev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT pour la table `Role`
 --
 ALTER TABLE `Role`
@@ -245,14 +256,7 @@ ALTER TABLE `Utilisateur`
 -- Contraintes pour la table `Affecter`
 --
 ALTER TABLE `Affecter`
-  ADD CONSTRAINT `Affecter_ibfk_1` FOREIGN KEY (`id_dev`) REFERENCES `Developpeur` (`id_dev`),
   ADD CONSTRAINT `Affecter_ibfk_2` FOREIGN KEY (`id_tache`) REFERENCES `Tâche` (`id_tache`);
-
---
--- Contraintes pour la table `Competence`
---
-ALTER TABLE `Competence`
-  ADD CONSTRAINT `Competence_ibfk_1` FOREIGN KEY (`id_dev`) REFERENCES `Developpeur` (`id_dev`);
 
 --
 -- Contraintes pour la table `Contrat`
@@ -264,7 +268,6 @@ ALTER TABLE `Contrat`
 -- Contraintes pour la table `Projet`
 --
 ALTER TABLE `Projet`
-  ADD CONSTRAINT `Projet_ibfk_1` FOREIGN KEY (`id_resp`) REFERENCES `Developpeur` (`id_dev`),
   ADD CONSTRAINT `Projet_ibfk_2` FOREIGN KEY (`id_contrat`) REFERENCES `Contrat` (`id_contrat`);
 
 --

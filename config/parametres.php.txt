@@ -1,7 +1,0 @@
-<?php
-    //Refaire ce fichier en .local et y mettre les paramètres  
-    //$config['serveur']='localhost';
-    //$config['login']='login4xxx';
-    //$config['mdp']='xxxxxxxxx';
-    //$config['bd']='dblogin4xxx';
-?>

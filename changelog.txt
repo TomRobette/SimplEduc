@@ -1,4 +1,8 @@
 //Ici seront décrites les modifications faites
+
+#13/10/2020#TomRobette#
+-Correction du gitignore concernant "parametres.php"
+
 #10/10/2020#TomRobette#
 -Correction de la table developpeur
 -Ajout de la vue et du controlleur "liste_devs"

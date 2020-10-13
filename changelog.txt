@@ -6,6 +6,7 @@
 -Ajout de quelques valeurs de test dans la BD
 -Ajout de l'élément cout dans la table Tâche
 -Suppression de la table cout_global dans la table Contrat
+-Correction de la classe Tâche
 
 #13/10/2020#HugoFontaine#
 -Correction de la base de donnée 

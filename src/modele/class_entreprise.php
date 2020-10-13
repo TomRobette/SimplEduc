@@ -6,6 +6,7 @@
 		private $delete;
 		private $selectLimit;
 		private $selectCount;
+		private $getProjetsFromThis;
 
         public function __construct($db){
             $this->db=$db;
@@ -14,6 +15,7 @@
 			$this->delete = $this->db->prepare("DELETE FROM Entreprise WHERE id_entreprise=:id");
 			$this->selectLimit = $this->db->prepare("SELECT id_entreprise, adr_ville, adr_cp, adr_rue, adr_no, nom_contact, prenom_contact, tel_contact FROM Entreprise ORDER BY id_entreprise LIMIT :inf,:limite");
 			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Entreprise");
+			$this->getProjetsFromThis = $this->db->prepare("SELECT P.libelle AS Projet, C.date_signature FROM Entreprise E RIGHT JOIN Contrat C ON E.id_entreprise=C.id_entreprise RIGHT JOIN Projet P ON C.id_contrat=P.id_contrat ORDER BY C.date_sinature");
 		}
 
 		public function selectLimit($inf, $limite){
@@ -61,6 +63,14 @@
 				print_r($this->getEntreprises->errorInfo());
 			}
 			return $this->getEntreprises->fetchAll();
+		}
+
+		public function getProjetsFromThis(){
+			$this->getProjetsFromThis->execute();
+			if ($this->getProjetsFromThis->errorCode()!=0){
+				print_r($this->getProjetsFromThis->errorInfo());
+			}
+			return $this->getProjetsFromThis->fetchAll();
 		}
     }
 ?>   

@@ -1,10 +1,10 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{parent()}}Ajout Dev{% endblock %}
+{% block title %}{{parent()}}Ajout Client{% endblock %}
 
 {% block contenu %}
-<h1 class="text-center text-primary p-4">Ajouter un développeur</h1> 
-    <div class="row justify-content-center">    
+<h1 class="text-center text-primary p-4">Ajouter un client</h1>   
+    <div class="row justify-content-center">
       <form method="POST" action="index.php?page=ajoutDev" class="col-xl-4 col-sm-8" enctype="multipart/form-data">
 
         <div class="form-group">
@@ -42,5 +42,6 @@
 
         <button type="submit" name="btAjout" id="btAjout" class="btn btn-primary">Ajouter</button>
       </form>
+      
     </div>
 {% endblock %}

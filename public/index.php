@@ -20,5 +20,3 @@
     $contenu($twig,$db);
     
 ?>
-
-

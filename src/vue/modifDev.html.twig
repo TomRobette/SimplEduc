@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{parent()}}Modif Dev{% endblock %}
+
+{% block contenu %}
+
+<br>
+    <div class="row justify-content-center">
+      <form method="POST" action="index.php?page=modifDev" class="col-xl-4 col-sm-8" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Nom</label>
+          <input type="text" name="inputNom" class="form-control" id="inputNom" placeholder="Nom" value={{form['unDev'].nom}}>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Prénom</label>
+          <input type="text" name="inputPrenom" class="form-control" id="inputPrenom" placeholder="Prénom" value={{form['unDev'].prenom}}>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Date d'embauche</label>
+          <input type="date" name="inputDate_embauche" class="form-control" id="inputDate_embauche" placeholder="Votre date d'embauche" value={{form['unDev'].date_embauche}}>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Coût horaire</label>
+          <input type="text" name="inputCout_horaire" class="form-control" id="inputCout_horaire" placeholder="Coût horaire" value={{form['unDev'].cout_horaire}}>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Ville</label>
+          <input type="text" name="inputAdr_ville" class="form-control" id="inputAdr_ville" placeholder="Ville" value={{form['unDev'].adr_ville}}>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Code Postal</label>
+          <input type="text" name="inputAdr_cp" class="form-control" id="inputAdr_cp" placeholder="Code Postal" value={{form['unDev'].adr_cp}}>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Rue</label>
+          <input type="text" name="inputAdr_rue" class="form-control" id="inputAdr_rue" placeholder="Rue" value={{form['unDev'].adr_rue}}>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Numéro de rue</label>
+          <input type="text" name="inputAdr_no" class="form-control" id="inputAdr_no" placeholder="Numéro de rue" value={{form['unDev'].adr_no}}>
+        </div>
+
+        <button type="submit" name="btModif" id="btModif" class="btn btn-primary">Modifier</button>
+      </form>
+    </div>
+{% endblock %}

@@ -20,9 +20,9 @@
             $form['valide'] = false;
             $form['message'] = 'Problème d\'insertion dans la table développeur ';
           }else{ 
-            header("Location:index.php");    
+            header("Location:index.php?page=liste_devs");    
           }
       }
-        echo $twig -> render('ajoutDev.html.twig',array());
+        echo $twig -> render('ajoutDev.html.twig',array('form'=>$form));
     }
 ?>

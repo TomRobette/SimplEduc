@@ -7,6 +7,7 @@
 		private $delete;
 		private $selectLimit;
 		private $selectCount;
+		private $modify;
 
         public function __construct($db){
             $this->db=$db;
@@ -16,6 +17,17 @@
             $this->delete = $this->db->prepare("DELETE FROM Developpeur WHERE id_dev=:id");
 			$this->selectLimit = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no FROM Developpeur ORDER BY date_embauche LIMIT :inf,:limite");
 			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Developpeur");
+			$this->modify = $this->db->prepare("UPDATE Developpeur SET nom=:nom, prenom=:prenom, date_embauche=:date_embauche, cout_horaire=:cout_horaire, adr_ville=:adr_ville, adr_cp=:adr_cp, adr_rue=:adr_rue, adr_no=:adr_no WHERE id_dev=:id");
+		}
+
+		public function modify($id, $nom, $prenom, $date_embauche, $cout_horaire, $adr_ville, $adr_cp, $adr_rue, $adr_no){
+			$r = true;
+			$this->modify->execute(array(':id'=>$id, ':id'=>$id, ':nom'=>$nom, ':prenom'=>$prenom, ':date_embauche'=>$date_embauche, ':cout_horaire'=>$cout_horaire, ':adr_ville'=>$adr_ville, ':adr_cp'=>$adr_cp, ':adr_rue'=>$adr_rue, ':adr_no'=>$adr_no));
+			if ($this->modify->errorCode()!=0){
+				print_r($this->modify->errorInfo());
+				$r=false;
+			}
+			return $r;
 		}
 
 		public function selectLimit($inf, $limite){

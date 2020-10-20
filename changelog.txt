@@ -1,4 +1,27 @@
 //Ici seront décrites les modifications faites
+
+#20/10/2020#TomRobette#
+-Ajout de getEntrepriseById dans la classe entreprise
+-Ajout d'un élément libelle dans la table entreprise (le nom de l'entreprise)
+-Modification des classe correspondant à la modif ci-dessus
+-Création de la page client avec la liste des projets (Le système de pagination a dû être commenté)
+
+#13/10/2020#RemiAccart#
+-Ajout de la page d'ajout des clients
+-Ajout du controlleur et de la fonction d'ajout d'un client
+
+#13/10/2020#TomRobette#
+-Correction du gitignore concernant "parametres.php"
+-Correction de l'auto-incrémentation des tables
+-Ajout de quelques valeurs de test dans la BD
+-Ajout de l'élément cout dans la table Tâche
+-Suppression de la table cout_global dans la table Contrat
+-Correction de la classe Tâche
+-Ajout de la liste clients
+
+#13/10/2020#HugoFontaine#
+-Correction de la base de donnée 
+
 #10/10/2020#TomRobette#
 -Correction de la table developpeur
 -Ajout de la vue et du controlleur "liste_devs"

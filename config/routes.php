@@ -6,6 +6,9 @@ function getPage($db){
     $lesPages['ajoutDev']="ajoutDevControleur";
     $lesPages['liste_devs']="liste_devsControleur";
     $lesPages['modifDev']="modifDevControleur";
+    $lesPages['listeClients']="listeClientsControleur";
+    $lesPages['ajoutClient']="ajoutClientControleur";
+    $lesPages['client']="clientControleur";
     
     
 

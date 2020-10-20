@@ -1,26 +1,44 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{parent()}}Projets{% endblock %}
+{% block title %}{{parent()}}Client{% endblock %}
 
 {% block contenu %}
-{% if form.etat is defined %}
-    {% if form.etat == true %}
-        <h1 class="h3 mb-3 font-weight-normal">Suppression réussie</h1>
-    {% else %}
-        <h1 class="alert alert-danger" role="alert">Problème lors de la suppression</h1>
-    {% endif %}
-{% endif %} 
 
 <div class="container-fluid">           
+       
+    <div class="card mx-auto mb-3" style="max-width: 840px;">
+        <div class="row no-gutters">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{client.libelle}}</h5>
+                    <p class="card-text">Contact : <small class="text-muted">{{client.nom_contact|upper}} {{client.prenom_contact|capitalize}}</small></p> 
+                    <p class="card-text">Téléphone : {{client.tel_contact}}</small></p> 
+                     
+                    <p class="card-text">Adresse :</small></p> 
+                    
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Ville : <small class="text-muted">{{client.adr_ville}}</small></li>
+                        <li class="list-group-item">Code Postal : <small class="text-muted">{{client.adr_cp}}</small></li>
+                        <li class="list-group-item">Rue : <small class="text-muted">{{client.adr_rue}}</small></li>
+                        <li class="list-group-item">Numéro : <small class="text-muted">{{client.adr_no}}</small></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="row justify-content-center">            
-        <h1 class="text-center text-primary p-4">Liste des utilisateurs</h1>        
-    </div>        
+        <h1 class="text-center text-primary p-4">Liste des projets</h1>        
+    </div>     
+
     <div class="row justify-content-center">            
         <div class="col-8 bg-white p-4 m-0 text-dark"> 
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Libelle</th>
+                        <th scope="col">Nom du projet</th>
+                        <th scope="col">Date de signature du contrat</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
@@ -28,8 +46,8 @@
                 <tbody>
                     {% for projet in liste %}
                         <tr class="{{ cycle(['table-secondary', 'table-light'], loop.index0)}}">
-
-                            <td>{{projet.libelle}}</td>
+                            <td>{{projet.projetlib}}</td>
+                            <td>{{projet.sign}}</td>
                             <td><a href="index.php?page=listeProjets&id={{projet.id_proj}}"<span class="material-icons text-dark" title="Modifier le développeur'">create</span></a></td>
                             <td><a href="index.php?page=listeProjets&supp={{projet.id_proj}}"<span class="material-icons text-dark" title="Supprimer le développeur">delete</span></a></td>
                         </tr>
@@ -39,7 +57,7 @@
     </div>
 </div>
 
-{% set nb = form.nbpages %}
+<!--{% set nb = form.nbpages %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center m-4 p-4">
             <li class="page-item-alert {% if form.nopage == 0 %}disabled{% endif %}">
@@ -62,4 +80,5 @@
             </li>
         </ul>
     </nav>
+    -->
 {% endblock %}

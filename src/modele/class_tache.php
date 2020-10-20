@@ -9,10 +9,10 @@
 
         public function __construct($db){
             $this->db=$db;
-            $this->insert = $this->db->prepare("INSERT INTO Tâche(libelle, temps_tache, status, id_proj)VALUES(:libelle,:temps_tache,:status,:id_proj");
-			$this->getTaches = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache");
+            $this->insert = $this->db->prepare("INSERT INTO Tâche(libelle, temps_tache, status, cout, id_proj)VALUES(:libelle,:temps_tache,:status,:cout,:id_proj");
+			$this->getTaches = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, T.cout, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache");
             $this->delete = $this->db->prepare("DELETE FROM Tâche WHERE id_tache=:id");
-			$this->selectLimit = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache LIMIT :inf,:limite");
+			$this->selectLimit = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, T.cout, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache LIMIT :inf,:limite");
 			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Tâche");
 		}
 
@@ -44,9 +44,9 @@
 			return $r;
 		}
 
-		public function insert($libelle, $temps_tache, $status, $id_proj){
+		public function insert($libelle, $temps_tache, $status, $cout, $id_proj){
 			$r = true;
-			$this->insert->execute(array(':libelle'=>$libelle,':temps_tache'=>$temps_tache,':status'=>$status, ':id_proj'=>$id_proj));
+			$this->insert->execute(array(':libelle'=>$libelle,':temps_tache'=>$temps_tache,':cout'=>$cout,':status'=>$status, ':id_proj'=>$id_proj));
 			
 			if($this->insert->errorCode()!=0){
 				print_r($this->insert->errorInfo());

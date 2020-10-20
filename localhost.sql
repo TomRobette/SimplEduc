@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 13 Octobre 2020 à 13:41
+-- Généré le :  Mar 20 Octobre 2020 à 09:55
 -- Version du serveur :  10.1.41-MariaDB-0+deb9u1
 -- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
@@ -116,6 +116,7 @@ INSERT INTO `Developpeur` (`id_dev`, `nom`, `prenom`, `date_embauche`, `cout_hor
 
 CREATE TABLE `Entreprise` (
   `id_entreprise` int(11) NOT NULL,
+  `libelle` varchar(30) NOT NULL,
   `adr_ville` text NOT NULL,
   `adr_cp` text NOT NULL,
   `adr_rue` text NOT NULL,
@@ -129,8 +130,8 @@ CREATE TABLE `Entreprise` (
 -- Contenu de la table `Entreprise`
 --
 
-INSERT INTO `Entreprise` (`id_entreprise`, `adr_ville`, `adr_cp`, `adr_rue`, `adr_no`, `nom_contact`, `prenom_contact`, `tel_contact`) VALUES
-(1, 'Arras', '62000', 'Rue des Avenues', '54 bis', 'Dupuis', 'Mauricette', '0606060606');
+INSERT INTO `Entreprise` (`id_entreprise`, `libelle`, `adr_ville`, `adr_cp`, `adr_rue`, `adr_no`, `nom_contact`, `prenom_contact`, `tel_contact`) VALUES
+(1, 'Boucherie Chez Robert', 'Arras', '62000', 'Rue des Avenues', '54 bis', 'Dupuis', 'Mauricette', '0606060606');
 
 -- --------------------------------------------------------
 

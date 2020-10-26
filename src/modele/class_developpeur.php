@@ -11,18 +11,18 @@
 
         public function __construct($db){
             $this->db=$db;
-            $this->insert = $this->db->prepare("INSERT INTO Developpeur(nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no) VALUES (:nom, :prenom, :date_embauche, :cout_horaire, :adr_ville, :adr_cp, :adr_rue, :adr_no)");
-			$this->getDeveloppeurs = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no FROM Developpeur ORDER BY date_embauche");
-            $this->getDeveloppeurById = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no FROM Developpeur WHERE id_dev=:id");
+            $this->insert = $this->db->prepare("INSERT INTO Developpeur(nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no, mdp) VALUES (:nom, :prenom, :date_embauche, :cout_horaire, :adr_ville, :adr_cp, :adr_rue, :adr_no, :mdp)");
+			$this->getDeveloppeurs = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no, mdp FROM Developpeur ORDER BY date_embauche");
+            $this->getDeveloppeurById = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no, mdp FROM Developpeur WHERE id_dev=:id");
             $this->delete = $this->db->prepare("DELETE FROM Developpeur WHERE id_dev=:id");
 			$this->selectLimit = $this->db->prepare("SELECT id_dev, nom, prenom, date_embauche, cout_horaire, adr_ville, adr_cp, adr_rue, adr_no FROM Developpeur ORDER BY date_embauche LIMIT :inf,:limite");
 			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Developpeur");
-			$this->modify = $this->db->prepare("UPDATE Developpeur SET nom=:nom, prenom=:prenom, date_embauche=:date_embauche, cout_horaire=:cout_horaire, adr_ville=:adr_ville, adr_cp=:adr_cp, adr_rue=:adr_rue, adr_no=:adr_no WHERE id_dev=:id");
+			$this->modify = $this->db->prepare("UPDATE Developpeur SET nom=:nom, prenom=:prenom, date_embauche=:date_embauche, cout_horaire=:cout_horaire, adr_ville=:adr_ville, adr_cp=:adr_cp, adr_rue=:adr_rue, adr_no=:adr_no, mdp=:mdp WHERE id_dev=:id");
 		}
 
-		public function modify($id, $nom, $prenom, $date_embauche, $cout_horaire, $adr_ville, $adr_cp, $adr_rue, $adr_no){
+		public function modify($id, $nom, $prenom, $date_embauche, $cout_horaire, $adr_ville, $adr_cp, $adr_rue, $adr_no, $mdp){
 			$r = true;
-			$this->modify->execute(array(':id'=>$id, ':id'=>$id, ':nom'=>$nom, ':prenom'=>$prenom, ':date_embauche'=>$date_embauche, ':cout_horaire'=>$cout_horaire, ':adr_ville'=>$adr_ville, ':adr_cp'=>$adr_cp, ':adr_rue'=>$adr_rue, ':adr_no'=>$adr_no));
+			$this->modify->execute(array(':id'=>$id, ':id'=>$id, ':nom'=>$nom, ':prenom'=>$prenom, ':date_embauche'=>$date_embauche, ':cout_horaire'=>$cout_horaire, ':adr_ville'=>$adr_ville, ':adr_cp'=>$adr_cp, ':adr_rue'=>$adr_rue, ':adr_no'=>$adr_no, ':mdp'=>$mdp));
 			if ($this->modify->errorCode()!=0){
 				print_r($this->modify->errorInfo());
 				$r=false;
@@ -58,9 +58,9 @@
 			return $r;
 		}
 
-		public function insert($nom, $prenom, $date_embauche, $cout_horaire, $adr_ville, $adr_cp, $adr_rue, $adr_no){
+		public function insert($nom, $prenom, $date_embauche, $cout_horaire, $adr_ville, $adr_cp, $adr_rue, $adr_no, $mdp){
 			$r = true;
-			$this->insert->execute(array(':nom'=>$nom, ':prenom'=>$prenom, ':date_embauche'=>$date_embauche, ':cout_horaire'=>$cout_horaire, ':adr_ville'=>$adr_ville, ':adr_cp'=>$adr_cp, ':adr_rue'=>$adr_rue, ':adr_no'=>$adr_no));
+			$this->insert->execute(array(':nom'=>$nom, ':prenom'=>$prenom, ':date_embauche'=>$date_embauche, ':cout_horaire'=>$cout_horaire, ':adr_ville'=>$adr_ville, ':adr_cp'=>$adr_cp, ':adr_rue'=>$adr_rue, ':adr_no'=>$adr_no, ':mdp'=>$mdp));
 			
 			if($this->insert->errorCode()!=0){
 				print_r($this->insert->errorInfo());

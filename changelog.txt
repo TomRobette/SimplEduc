@@ -1,5 +1,9 @@
 //Ici seront décrites les modifications faites
 
+#26/10/2020#TomRobette#
+-Ajout d'un élément mdp dans la table utilisateur et dans les classes
+-Ajout du mot de passe dans les formulaires de développeurs
+
 #20/10/2020#TomRobette#
 -Ajout de getEntrepriseById dans la classe entreprise
 -Ajout d'un élément libelle dans la table entreprise (le nom de l'entreprise)

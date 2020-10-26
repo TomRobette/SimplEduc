@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb4
+-- version 4.6.6deb4+deb9u2
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 20 Octobre 2020 à 09:55
--- Version du serveur :  10.1.41-MariaDB-0+deb9u1
+-- Généré le :  Lun 26 Octobre 2020 à 10:53
+-- Version du serveur :  10.1.47-MariaDB-0+deb9u1
 -- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -97,16 +97,17 @@ CREATE TABLE `Developpeur` (
   `adr_ville` text NOT NULL,
   `adr_cp` text NOT NULL,
   `adr_rue` text NOT NULL,
-  `adr_no` text NOT NULL
+  `adr_no` text NOT NULL,
+  `mdp` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Contenu de la table `Developpeur`
 --
 
-INSERT INTO `Developpeur` (`id_dev`, `nom`, `prenom`, `date_embauche`, `cout_horaire`, `adr_ville`, `adr_cp`, `adr_rue`, `adr_no`) VALUES
-(2, 'Smith', 'John', '0001-02-10', 1900, 'Arras', '62000', 'Rue des chemins', '12'),
-(3, 'Johnson', 'Ron', '2020-07-09', 69, 'Arras', '62000', 'Avenue des chemins', '7');
+INSERT INTO `Developpeur` (`id_dev`, `nom`, `prenom`, `date_embauche`, `cout_horaire`, `adr_ville`, `adr_cp`, `adr_rue`, `adr_no`, `mdp`) VALUES
+(2, 'Smith', 'John', '0001-02-10', 1900, 'Arras', '62000', 'Rue des chemins', '12', ''),
+(3, 'Johnson', 'Ron', '2020-07-09', 69, 'Arras', '62000', 'Avenue des chemins', '7', '');
 
 -- --------------------------------------------------------
 

@@ -41,6 +41,7 @@
                         <th scope="col">Date de signature du contrat</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,8 +49,9 @@
                         <tr class="{{ cycle(['table-secondary', 'table-light'], loop.index0)}}">
                             <td>{{projet.projetlib}}</td>
                             <td>{{projet.sign}}</td>
-                            <td><a href="index.php?page=listeProjets&id={{projet.id_proj}}"<span class="material-icons text-dark" title="Modifier le développeur'">create</span></a></td>
-                            <td><a href="index.php?page=listeProjets&supp={{projet.id_proj}}"<span class="material-icons text-dark" title="Supprimer le développeur">delete</span></a></td>
+                            <td><a href="index.php?page=projet&id={{projet.id_proj}}"<span class="material-icons text-dark" title="Voir le projet">find_in_page</span></a></td>
+                            <td><a href="index.php?page=listeProjets&id={{projet.id_proj}}"<span class="material-icons text-dark" title="Modifier le projet'">create</span></a></td>
+                            <td><a href="index.php?page=listeProjets&supp={{projet.id_proj}}"<span class="material-icons text-dark" title="Supprimer le projet">delete</span></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>                

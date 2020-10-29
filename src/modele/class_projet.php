@@ -7,6 +7,7 @@
 		private $delete;
 		private $selectLimit;
 		private $selectCount;
+		private $getProjetById;
 
         public function __construct($db){
             $this->db=$db;
@@ -16,6 +17,7 @@
 			$this->delete = $this->db->prepare("DELETE FROM Projet WHERE id_proj=:id");
 			$this->selectLimit = $this->db->prepare("SELECT P.id_proj, P.libelle, P.id_resp, D.nom, D.prenom FROM Projet P, Developpeur D WHERE P.id_resp=D.id_dev ORDER BY P.id_proj LIMIT :inf,:limite");
 			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Projet");
+			$this->getProjetById = $this->db->prepare("SELECT P.id_proj, P.libelle AS libelleProj, P.id_resp, D.nom, D.prenom, SUM(T.temps_tache) AS totalTemps, SUM(T.cout) AS totalCout FROM Projet P, Developpeur D, Tâche T WHERE P.id_resp=D.id_dev AND T.id_proj=P.id_proj AND P.id_proj=:id");
 		}
 
 		public function selectLimit($inf, $limite){
@@ -63,6 +65,14 @@
 				print_r($this->getProjetsFromClient->errorInfo());
 			}
 			return $this->getProjetsFromClient->fetchAll();
+		}
+
+		public function getProjetById($id){
+			$this->getProjetById->execute(array(':id'=>$id));
+			if ($this->getProjetById->errorCode()!=0){
+				print_r($this->getProjetById->errorInfo());
+			}
+			return $this->getProjetById->fetch();
 		}
 
 		public function getProjets(){

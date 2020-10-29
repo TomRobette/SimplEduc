@@ -1,4 +1,8 @@
 //Ici seront décrites les modifications faites
+#29/10/2020#TomRobette#
+-Ajout d'une fonction getTachesFromProjet et getProjetById
+-Ajout d'un controleur et d'une vue "projet" accessible depuis les listes de projets
+-La page projet affiche les données du projet correspondant dont son coût et temps total, la liste des tâches associées, etc
 
 #26/10/2020#TomRobette#
 -Ajout d'un élément mdp dans la table utilisateur et dans les classes

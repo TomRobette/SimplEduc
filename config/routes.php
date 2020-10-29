@@ -9,6 +9,7 @@ function getPage($db){
     $lesPages['listeClients']="listeClientsControleur";
     $lesPages['ajoutClient']="ajoutClientControleur";
     $lesPages['client']="clientControleur";
+    $lesPages['projet']="projetControleur";
     
     
 

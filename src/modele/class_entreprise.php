@@ -18,7 +18,7 @@
 			$this->delete = $this->db->prepare("DELETE FROM Entreprise WHERE id_entreprise=:id");
 			$this->selectLimit = $this->db->prepare("SELECT id_entreprise, libelle, adr_ville, adr_cp, adr_rue, adr_no, nom_contact, prenom_contact, tel_contact FROM Entreprise ORDER BY id_entreprise LIMIT :inf,:limite");
 			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Entreprise");
-			$this->getProjetsFromThis = $this->db->prepare("SELECT P.libelle AS projetlib, C.date_signature AS sign FROM Entreprise E, Projet P, Contrat C WHERE E.id_entreprise=C.id_entreprise AND C.id_contrat=P.id_contrat AND E.id_entreprise=:id");
+			$this->getProjetsFromThis = $this->db->prepare("SELECT P.id_proj, P.libelle AS projetlib, C.date_signature AS sign FROM Entreprise E, Projet P, Contrat C WHERE E.id_entreprise=C.id_entreprise AND C.id_contrat=P.id_contrat AND E.id_entreprise=:id");
 			$this->selectLimitProj = $this->db->prepare("SELECT P.libelle AS projetlib, C.date_signature AS sign FROM Entreprise E, Projet P, Contrat C WHERE E.id_entreprise=C.id_entreprise AND C.id_contrat=P.id_contrat AND E.id_entreprise=:id ORDER BY sign LIMIT :inf,:limite");
 			$this->selectCountProj =$this->db->prepare("SELECT COUNT(*) AS nb FROM Entreprise E, Projet P, Contrat C WHERE E.id_entreprise=C.id_entreprise AND C.id_contrat=P.id_contrat AND E.id_entreprise=:id");
 			$this->getEntrepriseById = $this->db->prepare("SELECT id_entreprise, libelle, adr_ville, adr_cp, adr_rue, adr_no, nom_contact, prenom_contact, tel_contact FROM Entreprise WHERE id_entreprise=:id");

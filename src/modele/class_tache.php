@@ -6,6 +6,7 @@
 		private $delete;
 		private $selectLimit;
 		private $selectCount;
+		private $getTachesFromProjet;
 
         public function __construct($db){
             $this->db=$db;
@@ -14,6 +15,15 @@
             $this->delete = $this->db->prepare("DELETE FROM Tâche WHERE id_tache=:id");
 			$this->selectLimit = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, T.cout, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache LIMIT :inf,:limite");
 			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Tâche");
+			$this->getTachesFromProjet = $this->db->prepare("SELECT T.id_tache, T.libelle AS libelleTache, T.temps_tache, T.status, T.cout FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj AND P.id_proj=:id ORDER BY T.id_tache");
+		}
+
+		public function getTachesFromProjet($id){
+			$this->getTachesFromProjet->execute(array(':id'=>$id));
+			if ($this->getTachesFromProjet->errorCode()!=0){
+				print_r($this->getTachesFromProjet->errorInfo());
+			}
+			return $this->getTachesFromProjet->fetchAll();
 		}
 
 		public function selectLimit($inf, $limite){

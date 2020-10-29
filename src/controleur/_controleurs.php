@@ -8,6 +8,7 @@
      require_once 'listeClientsControleur.php';
      require_once 'ajoutClientControleur.php';
      require_once 'clientControleur.php';
+     require_once 'projetControleur.php';
 ?>
 
 

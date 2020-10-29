@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Lun 26 Octobre 2020 à 10:53
+-- Généré le :  Jeu 29 Octobre 2020 à 11:23
 -- Version du serveur :  10.1.47-MariaDB-0+deb9u1
 -- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
@@ -194,7 +194,8 @@ CREATE TABLE `Tâche` (
 --
 
 INSERT INTO `Tâche` (`id_tache`, `libelle`, `temps_tache`, `status`, `cout`, `id_proj`) VALUES
-(1, 'BD', '48h', 'En cours', 0, 1);
+(1, 'BD', '48h', 'En cours', 100, 1),
+(2, 'Controleurs', '96h', 'À faire', 200, 1);
 
 -- --------------------------------------------------------
 
@@ -313,7 +314,7 @@ ALTER TABLE `Role`
 -- AUTO_INCREMENT pour la table `Tâche`
 --
 ALTER TABLE `Tâche`
-  MODIFY `id_tache` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tache` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `Utilisateur`
 --

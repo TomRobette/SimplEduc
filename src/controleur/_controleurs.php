@@ -9,6 +9,12 @@
      require_once 'ajoutClientControleur.php';
      require_once 'clientControleur.php';
      require_once 'projetControleur.php';
+     require_once 'listeTachesControleur.php';
+     require_once 'ajoutTacheControleur.php';
+     require_once 'tacheControleur.php';
+     
+
+
 ?>
 
 

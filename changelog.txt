@@ -1,4 +1,10 @@
 //Ici seront décrites les modifications faites
+#10/11/2020#TomRobette#
+-Ajout de ListeTache
+-Ajout d'un controleur et d'une vue "Tache" accessible depuis les listes de tache
+-La page Tache affiche  pour une tâche d'un projet la date de début, la date de fin (si elle est connue) de chaque
+développeur. 
+
 #29/10/2020#TomRobette#
 -Ajout d'une fonction getTachesFromProjet et getProjetById
 -Ajout d'un controleur et d'une vue "projet" accessible depuis les listes de projets

@@ -10,12 +10,13 @@
 
         public function __construct($db){
             $this->db=$db;
-            $this->insert = $this->db->prepare("INSERT INTO Tâche(libelle, temps_tache, status, cout, id_proj)VALUES(:libelle,:temps_tache,:status,:cout,:id_proj");
-			$this->getTaches = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, T.cout, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache");
+            $this->insert = $this->db->prepare("INSERT INTO Tâche(libelle, temps_tache, status, cout, id_proj, datedebut, datefin)VALUES(:libelle,:temps_tache,:status,:cout,:id_proj,:datedebut,:datefin");
+			$this->getTaches = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, T.cout, T.datedebut, T.datefin, D.nom, D.prenom P.libelle FROM Tâche T, Projet P,Affecter A, Developpeur D WHERE T.id_proj=P.id_proj ORDER BY T.id_tache");
             $this->delete = $this->db->prepare("DELETE FROM Tâche WHERE id_tache=:id");
-			$this->selectLimit = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, T.cout, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache LIMIT :inf,:limite");
+			$this->selectLimit = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, T.cout,T.datedebut,T.datefin, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache LIMIT :inf,:limite");
 			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Tâche");
-			$this->getTachesFromProjet = $this->db->prepare("SELECT T.id_tache, T.libelle AS libelleTache, T.temps_tache, T.status, T.cout FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj AND P.id_proj=:id ORDER BY T.id_tache");
+			$this->getTachesFromProjet = $this->db->prepare("SELECT T.id_tache, T.libelle AS libelleTache, T.temps_tache, T.status, T.cout, T.datedebut, T.datefin FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj AND P.id_proj=:id ORDER BY T.id_tache");
+			
 		}
 
 		public function getTachesFromProjet($id){
@@ -54,9 +55,9 @@
 			return $r;
 		}
 
-		public function insert($libelle, $temps_tache, $status, $cout, $id_proj){
+		public function insert($libelle, $temps_tache, $status, $cout, $id_proj,$datedebut,$datefin){
 			$r = true;
-			$this->insert->execute(array(':libelle'=>$libelle,':temps_tache'=>$temps_tache,':cout'=>$cout,':status'=>$status, ':id_proj'=>$id_proj));
+			$this->insert->execute(array(':libelle'=>$libelle,':temps_tache'=>$temps_tache,':cout'=>$cout,':status'=>$status, ':id_proj'=>$id_proj, 'datedebut'=>$datedebut,'datefin'=>$datefin));
 			
 			if($this->insert->errorCode()!=0){
 				print_r($this->insert->errorInfo());

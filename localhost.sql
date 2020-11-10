@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Jeu 29 Octobre 2020 à 11:23
--- Version du serveur :  10.1.47-MariaDB-0+deb9u1
+-- Généré le :  Mar 10 Novembre 2020 à 11:33
+-- Version du serveur :  10.3.25-MariaDB-1:10.3.25+maria~stretch
 -- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -186,16 +186,18 @@ CREATE TABLE `Tâche` (
   `temps_tache` text NOT NULL,
   `status` text NOT NULL,
   `cout` int(11) NOT NULL,
-  `id_proj` int(11) NOT NULL
+  `id_proj` int(11) NOT NULL,
+  `datedebut` date NOT NULL,
+  `datefin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Contenu de la table `Tâche`
 --
 
-INSERT INTO `Tâche` (`id_tache`, `libelle`, `temps_tache`, `status`, `cout`, `id_proj`) VALUES
-(1, 'BD', '48h', 'En cours', 100, 1),
-(2, 'Controleurs', '96h', 'À faire', 200, 1);
+INSERT INTO `Tâche` (`id_tache`, `libelle`, `temps_tache`, `status`, `cout`, `id_proj`, `datedebut`, `datefin`) VALUES
+(1, 'BD', '48h', 'En cours', 100, 1, '2020-10-27', '2020-11-17'),
+(2, 'Controleurs', '96h', 'À faire', 200, 1, '2020-10-20', '2020-11-17');
 
 -- --------------------------------------------------------
 

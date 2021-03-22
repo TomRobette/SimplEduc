@@ -3,6 +3,8 @@
 #22/03/2021#TomRobette#
 -Création de la vue tache.html.twig
 -Reformatage de changelog.txt en CHANGELOG.md(ce fichier)
+-Mise en null de dateFin de la table Tache dans la BD
+-Création fr ajoutTacheControleur.php
 
 #10/11/2020#TomRobette#
 -Ajout de ListeTache

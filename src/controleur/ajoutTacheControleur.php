@@ -1,20 +1,27 @@
 <?php
-    /*function ajoutTacheControleur($twig,$db){
-        $form = array();     
+    function ajoutTacheControleur($twig,$db){
+        $form = array();    
+        $listeProjets = array();
+        $projet = new Projet($db);
+        $listeProjets = $projet->getProjets();
+        
         if (isset($_POST['btPoster'])){  
-            $inputTitre = $_PajoutProjetControleurOST['inputTitre'];
-            $inputContenu = $_POST['inputContenu'];
+            $inputLibelle = $_POST['inputLibelle'];
+            $inputTempsTache = $_POST['inputTempsTache'];
+            $inputStatus = $_POST['inputStatus'];
+            $inputCout = $_POST['inputCout'];
+            $inputProjet = $_POST['inputProjet'];
+            $inputDateDebut = $_POST['inputDateDebut'];
+            $inputDateFin = $_POST['inputDateFin'];
             $form['valide'] = true;      
-            $profil = new Profil($db);
-            $idProfil = $profil->selectByPseudo($_SESSION['login']);
-            $article=new Article($db);
-            $exec=$article->insert($idProfil['id'], $inputTitre, $inputContenu);
+            $tache=new Tache($db);
+            $exec=$tache->insert($inputLibelle, $inputTempsTache, $inputStatus, $inputCout, $inputProjet, $inputDateDebut, $inputDateFin);
             if(!$exec){
                 $form['valide'] = false;
-                $form['message'] = 'Problème d\'insertion dans la table article ';
+                $form['message'] = 'Problème d\'insertion dans la table Tache ';
             }
-            $profil->addArticle($idProfil['id']);
+            
         }
-        echo $twig -> render('ajoutArticle.html.twig',array());
-    }*/
+        echo $twig -> render('ajoutTache.html.twig',array('projets'=>$listeProjets));
+    }
 ?>

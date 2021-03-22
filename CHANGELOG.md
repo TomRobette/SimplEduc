@@ -1,4 +1,9 @@
 //Ici seront décrites les modifications faites
+===================================
+#22/03/2021#TomRobette#
+-Création de la vue tache.html.twig
+-Reformatage de changelog.txt en CHANGELOG.md(ce fichier)
+
 #10/11/2020#TomRobette#
 -Ajout de ListeTache
 -Ajout d'un controleur et d'une vue "Tache" accessible depuis les listes de tache

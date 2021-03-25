@@ -17,7 +17,15 @@
 			$this->selectLimit = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, T.cout,T.datedebut,T.datefin, P.libelle FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj ORDER BY T.id_tache LIMIT :inf,:limite");
 			$this->selectCount =$this->db->prepare("SELECT COUNT(*) AS nb FROM Tâche");
 			$this->getTachesFromProjet = $this->db->prepare("SELECT T.id_tache, T.libelle AS libelleTache, T.temps_tache, T.status, T.cout, T.datedebut, T.datefin FROM Tâche T, Projet P WHERE T.id_proj=P.id_proj AND P.id_proj=:id ORDER BY T.id_tache");
-			$this->getTacheById = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, T.cout, T.datedebut, T.datefin, D.nom, D.prenom FROM Tâche T, Affecter A, Developpeur D WHERE D.id_dev=A.id_dev AND A.id_tache=T.id_tache");
+			$this->getTacheById = $this->db->prepare("SELECT T.id_tache, T.libelle, T.temps_tache, T.status, T.id_proj, T.cout, T.datedebut, T.datefin, D.nom, D.prenom FROM Tâche T, Affecter A, Developpeur D WHERE D.id_dev=A.id_dev AND A.id_tache=T.id_tache AND T.id_tache=:id");
+		}
+
+		public function getTacheById($id){
+			$this->getTacheById->execute(array(':id'=>$id));
+			if ($this->getTacheById->errorCode()!=0){
+				print_r($this->getTacheById->errorInfo());
+			}
+			return $this->getTacheById->fetch();
 		}
 
 		public function getTachesFromProjet($id){

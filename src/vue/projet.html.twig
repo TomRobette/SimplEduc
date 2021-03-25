@@ -35,6 +35,7 @@
                         <th scope="col">Coût</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,11 +45,13 @@
                             <td>{{tache.temps_tache}}</td>
                             <td>{{tache.status}}</td>
                             <td>{{tache.cout}}</td>
+                            <td><a href="index.php?page=tache&id={{tache.id_tache}}"<span class="material-icons text-dark" title="Voir la tache">find_in_page</span></a></td>
                             <td><a href="index.php?page=listeProjets&id={{tache.id_tache}}"<span class="material-icons text-dark" title="Modifier la tâche'">create</span></a></td>
                             <td><a href="index.php?page=listeProjets&supp={{tache.id_tache}}"<span class="material-icons text-dark" title="Supprimer la tâche">delete</span></a></td>
                         </tr>
                     {% endfor %}
-                </tbody>                
+                </tbody>   
+            </table>                  
         </div>        
     </div>
 </div>

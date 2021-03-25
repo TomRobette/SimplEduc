@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{parent()}}Tache{% endblock %}
+{% block title %}{{parent()}}Tâche{% endblock %}
 
 {% block contenu %}
 
@@ -10,25 +10,29 @@
         <div class="row no-gutters">
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title text-center">{{client.libelle}}</h5>
-                    <p class="card-text">Contact : <small class="text-muted">{{client.nom_contact|upper}} {{client.prenom_contact|capitalize}}</small></p> 
-                    <p class="card-text">Téléphone : {{client.tel_contact}}</small></p> 
+                    <h5 class="card-title text-center">{{tache.libelle}}</h5>
+                    <p class="card-text">Temps de la tache {{tache.temps_tache}}</small></p> 
+                    <p class="card-text">Status : {{tache.status}}</small></p> 
+                    <p class="card-text">Coût : {{tache.cout}}€</small></p> 
+                    <p class="card-text">Date de début : {{tache.dateDebut|date('d-m-Y', false)}}</small></p> 
+                    <p class="card-text">Date de fin : {{tache.dateFin|date('d-m-Y', false)}}</small></p> 
+
                      
-                    <p class="card-text">Adresse :</small></p> 
+                    {#<p class="card-text">Adresse :</small></p> 
                     
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Ville : <small class="text-muted">{{client.adr_ville}}</small></li>
                         <li class="list-group-item">Code Postal : <small class="text-muted">{{client.adr_cp}}</small></li>
                         <li class="list-group-item">Rue : <small class="text-muted">{{client.adr_rue}}</small></li>
                         <li class="list-group-item">Numéro : <small class="text-muted">{{client.adr_no}}</small></li>
-                    </ul>
+                    </ul> #}
                 </div>
             </div>
         </div>
     </div>
 
 
-    <div class="row justify-content-center">            
+    {#<div class="row justify-content-center">            
         <h1 class="text-center text-primary p-4">Liste des projets</h1>        
     </div>     
 
@@ -54,9 +58,10 @@
                             <td><a href="index.php?page=listeProjets&supp={{projet.id_proj}}"<span class="material-icons text-dark" title="Supprimer le projet">delete</span></a></td>
                         </tr>
                     {% endfor %}
-                </tbody>                
+                </tbody>    
+            </table>                
         </div>        
-    </div>
+    </div>#}
 </div>
 
 <!--{% set nb = form.nbpages %}

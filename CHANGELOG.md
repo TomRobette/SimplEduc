@@ -1,5 +1,9 @@
 //Ici seront décrites les modifications faites
 ===================================
+#25/03/2021#TomRobette#
+-Amélioration de la vue tache
+-Mise en place du chemin vers tache
+
 #22/03/2021#TomRobette#
 -Création de la vue tache.html.twig
 -Reformatage de changelog.txt en CHANGELOG.md(ce fichier)

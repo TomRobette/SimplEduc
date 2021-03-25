@@ -12,9 +12,6 @@
      require_once 'listeTachesControleur.php';
      require_once 'ajoutTacheControleur.php';
      require_once 'tacheControleur.php';
-     
-
-
 ?>
 
 

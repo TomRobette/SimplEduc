@@ -6,7 +6,7 @@
         if(isset($_GET['id'])){
             $tache = new Tache($db);
             $uneTache = $tache->getTacheById($_GET['id']);
-            $liste = $tache->getTachesFromProjet($_GET['id']);
+            $liste = $tache->getDevsByTache($_GET['id']);
         }else{
             $form['message'] = 'Tache non précisé';
         }

@@ -1,5 +1,8 @@
 //Ici seront décrites les modifications faites
 ===================================
+#29/03/2021#TomRobette#
+-Mise en place d'une liste dans tâche
+
 #25/03/2021#TomRobette#
 -Amélioration de la vue tache
 -Mise en place du chemin vers tache
@@ -8,7 +11,7 @@
 -Création de la vue tache.html.twig
 -Reformatage de changelog.txt en CHANGELOG.md(ce fichier)
 -Mise en null de dateFin de la table Tache dans la BD
--Création fr ajoutTacheControleur.php
+-Création de ajoutTacheControleur.php
 
 #10/11/2020#TomRobette#
 -Ajout de ListeTache

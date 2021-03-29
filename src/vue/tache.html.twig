@@ -11,11 +11,11 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title text-center">{{tache.libelle}}</h5>
-                    <p class="card-text">Temps de la tache {{tache.temps_tache}}</small></p> 
+                    <p class="card-text">Temps de la tâche : {{tache.temps_tache}}</small></p> 
                     <p class="card-text">Status : {{tache.status}}</small></p> 
                     <p class="card-text">Coût : {{tache.cout}}€</small></p> 
-                    <p class="card-text">Date de début : {{tache.dateDebut|date('d-m-Y', false)}}</small></p> 
-                    <p class="card-text">Date de fin : {{tache.dateFin|date('d-m-Y', false)}}</small></p> 
+                    <p class="card-text">Date de début : {{tache.datedebuttache|date('d-m-Y', false)}}</small></p> 
+                    <p class="card-text">Date de fin : {{tache.datefintache|date('d-m-Y', false)}}</small></p> 
 
                      
                     {#<p class="card-text">Adresse :</small></p> 
@@ -32,8 +32,8 @@
     </div>
 
 
-    {#<div class="row justify-content-center">            
-        <h1 class="text-center text-primary p-4">Liste des projets</h1>        
+    <div class="row justify-content-center">            
+        <h1 class="text-center text-primary p-4">Liste des développeurs liés à cette tâche</h1>        
     </div>     
 
     <div class="row justify-content-center">            
@@ -41,27 +41,31 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Nom du projet</th>
-                        <th scope="col">Date de signature du contrat</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Début de travail</th>
+                        <th scope="col">Fin de travail</th>
+                        {#<th scope="col"></th>
                         <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
+                        <th scope="col"></th>#}
                     </tr>
                 </thead>
                 <tbody>
-                    {% for projet in liste %}
+                    {% for dev in liste %}
                         <tr class="{{ cycle(['table-secondary', 'table-light'], loop.index0)}}">
-                            <td>{{projet.projetlib}}</td>
-                            <td>{{projet.sign}}</td>
-                            <td><a href="index.php?page=projet&id={{projet.id_proj}}"<span class="material-icons text-dark" title="Voir le projet">find_in_page</span></a></td>
+                            <td>{{dev.nom}}</td>
+                            <td>{{dev.prenom}}</td>
+                            <td>{{dev.datedebut}}</td>
+                            <td>{{dev.datefin}}</td>
+                            {# <td><a href="index.php?page=projet&id={{projet.id_proj}}"<span class="material-icons text-dark" title="Voir le projet">find_in_page</span></a></td>
                             <td><a href="index.php?page=listeProjets&id={{projet.id_proj}}"<span class="material-icons text-dark" title="Modifier le projet'">create</span></a></td>
-                            <td><a href="index.php?page=listeProjets&supp={{projet.id_proj}}"<span class="material-icons text-dark" title="Supprimer le projet">delete</span></a></td>
+                            <td><a href="index.php?page=listeProjets&supp={{projet.id_proj}}"<span class="material-icons text-dark" title="Supprimer le projet">delete</span></a></td>#}
                         </tr>
                     {% endfor %}
-                </tbody>    
+                </tbody>      
             </table>                
         </div>        
-    </div>#}
+    </div>
 </div>
 
 <!--{% set nb = form.nbpages %}

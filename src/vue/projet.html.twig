@@ -54,6 +54,39 @@
             </table>                  
         </div>        
     </div>
+
+    <div class="row justify-content-center">            
+        <h1 class="text-center text-primary p-4">Liste des développeurs par tâches</h1>        
+    </div>     
+
+    <div class="row justify-content-center">            
+        <div class="col-8 bg-white p-4 m-0 text-dark"> 
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id de tâche</th>
+                        <th scope="col">Tâche</th>
+                        <th scope="col">Nom de la tâche</th>
+                        <th scope="col">Temps nécessaire</th>
+                        <th scope="col">Début de travail</th>
+                        <th scope="col">Fin de travail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dev in listeDevs %}
+                        <tr class="{{ cycle(['table-secondary', 'table-light'], loop.index0)}}">
+                            <td>{{dev.id_tache}}</td>
+                            <td>{{dev.libelle}}</td>
+                            <td>{{dev.nom}}</td>
+                            <td>{{dev.prenom}}</td>
+                            <td>{{dev.datedebut}}</td>
+                            <td>{{dev.datefin}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>   
+            </table>                  
+        </div>        
+    </div>
 </div>
 
 <!--{% set nb = form.nbpages %}

@@ -2,6 +2,7 @@
 ===================================
 #29/03/2021#TomRobette#
 -Mise en place d'une liste dans tâche
+-Mise en place d'une liste des devs dans la vue projet
 
 #25/03/2021#TomRobette#
 -Amélioration de la vue tache

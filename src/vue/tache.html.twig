@@ -45,6 +45,7 @@
                         <th scope="col">Prénom</th>
                         <th scope="col">Début de travail</th>
                         <th scope="col">Fin de travail</th>
+                        <th scope="col"><button id="btSel" type="submit" class="btn btn-primary">Tout sélectionner</button></th>
                         {#<th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col"></th>#}
@@ -57,6 +58,8 @@
                             <td>{{dev.prenom}}</td>
                             <td>{{dev.datedebut}}</td>
                             <td>{{dev.datefin}}</td>
+                            <td><input name="case" type="checkbox" data="{{dev.id_dev}}"></td>
+                            
                             {# <td><a href="index.php?page=projet&id={{projet.id_proj}}"<span class="material-icons text-dark" title="Voir le projet">find_in_page</span></a></td>
                             <td><a href="index.php?page=listeProjets&id={{projet.id_proj}}"<span class="material-icons text-dark" title="Modifier le projet'">create</span></a></td>
                             <td><a href="index.php?page=listeProjets&supp={{projet.id_proj}}"<span class="material-icons text-dark" title="Supprimer le projet">delete</span></a></td>#}
@@ -92,4 +95,20 @@
         </ul>
     </nav>
     -->
+{% endblock %}
+
+
+{% block js %}
+{{parent()}}
+<script>
+    $("#btSel").click(function(){
+        $("input[name=case]").each(function(){
+            if(this.checked == false){
+	            this.checked = true;
+            }else{
+	            this.checked = false;
+            }
+	    }); 
+    }); 
+</script>    
 {% endblock %}
